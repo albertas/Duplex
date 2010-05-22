@@ -1,0 +1,75 @@
+{% extends "master.html" %}
+{% load comments %}
+{% block title %}
+		Sveiki!!
+{% endblock %}
+{% block content %}
+<div id="content">
+	<div class="post">
+		<h1 class="title">{{ recipe.name }}</h1>
+		<div class="entry">
+			<p>
+				<label>Autorius: </label><b>{{ recipe.author }}</b>
+				<label>Įdėtas: </label>
+				<i>{{ recipe.pub_date.date }}, {{ recipe.pub_date.time }}</i><br/>
+				<label>Gaminimo eiga: </label><br/><b>{{ recipe.process }}</b><br/>
+				<label>Gaminimo trukmė: </label><b>{{ recipe.duration }}</b><br/>
+				<label>Recepto apibūdinimas: </label><br/><b>{{ recipe.description }}</b><br/>
+				<label>Kategorija: </label><b>{{ recipe.recipe_type }}</b><br/>
+				<label>Virtuvė: </label><b>{{ recipe.cusine }}</b><br/>
+				<label>Ruošimo būdas: </label><b>{{ recipe.cooking_type }}</b><br/>
+				<label>Sudėtingumas: </label><b>{{ recipe.complexity }}</b><br/>
+				<label>Ingredientai: </label><b>{{ recipe.ingredients }}</b><br/>
+				<label>Prietaisai, indai, įrankiai: </label><b>{{ recipe.items }}</b><br/>
+			</p> 
+			</div>
+			{% get_comment_count for recipe as comment_count %}
+			<h1 class="title">Komentarai ({{ comment_count }})</h1>
+			<div class="entry">
+			<p>
+				{% get_comment_list for recipe as comment_list %}
+				{% for comment in comment_list %}
+					<p><b>{{comment.user_name}} <i>({{comment.submit_date.date}}):</i></b><br/>{{ comment.comment }}</p>
+				{% endfor %}
+			</p>
+			{% get_comment_form for recipe as form %}
+			{% if user.is_authenticated %}
+			<form action="{% comment_form_target %}" name='komentaru_forma' method="post">
+			{{ form.content_type }}
+		    {{ form.object_pk }}
+		    {{ form.timestamp }}
+		    {{ form.security_hash }}
+		    <br>{{ form.comment }}
+			<input type="hidden" name="next" value="/receptas/{{ recipe.id }}/" /><br>
+			<input type="submit" name="submit" class="submit-post" value="Komentuoti" />
+			</form>
+
+			{% else %}
+				<p><i>Norėdami komentuoti, turite prisijungti.</i></p>
+			{% endif %}
+		</div>
+		<div class="meta">
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="sidebar">
+	<div id="sidebar-bgtop"></div>
+	<div id="sidebar-content">
+		<div id="sidebar-bgbtm">
+		<ul>
+			{% if not user.is_authenticated %}
+				{% include "user/login.html" %}
+			{% else %}
+				{% include "user/logout.html" %}
+			{% endif %}
+			{% include "latest.html" %}
+		</ul>
+	</div>
+	</div>
+</div>
+<div style="clear:both; margin:0;"></div>
+{% endblock %}
+
+

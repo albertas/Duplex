@@ -1,0 +1,8 @@
+<li>
+	<h2>Naujausi receptai</h2>
+	<ul>
+		{% for recipe in latest_recipe_list %}
+			<li><a href="/receptas/{{ recipe.pk }}" class="latest_recipe">{{ recipe.name }}</a><li>
+		{% endfor %}
+	</ul>
+</li>

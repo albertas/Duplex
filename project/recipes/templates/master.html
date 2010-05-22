@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{% block title %}Sveiki!{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/styles/style.css" media="screen" />
+</head>
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+	<div id="logo">
+		<h1><a href="#">Receptai</a></h1>
+	</div>
+	<!-- end #logo -->
+	<div id="menu">
+		<ul>
+			<li class="active" ><a id="pagrindinis" href="/">Pagrindinis</a></li>
+			<li><a id="sarasas" href="/sarasas/">Receptų sąrašas</a></li>
+			<li><a id="paieska" href="/paieska/">Receptų paieška</a></li>
+			<li><a id="kurimas" href="/kurimas/">Receptų kūrimas</a></li>
+			<li><a id="kontaktai" href="/kontaktai/">Kontaktai</a></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+</div>
+<!-- end #header -->
+<div id="page">
+	{% block content %}{% endblock %}
+	{% block sidebar %}{% endblock %}
+</div>
+<!-- end #page -->
+
+</div>
+
+<div id="footer">
+	<p>&copy; 2010. All Rights Reserved. Design by Pukuotukas.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

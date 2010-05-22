@@ -1,0 +1,46 @@
+{% extends "master.html" %}
+{% block title %}
+		Registracija
+{% endblock %}
+{% block content %}
+<div id="content">
+	<div class="post">
+		<h1 class="title">Slaptažodžio keitimas</h1>
+		<div class="entry">
+			{% if error_message %}
+				<b><p>{{ error_message }}</p></b>
+			{% endif %}
+			<p>Vardas: <b>{{ user }}</b></p>
+			<p>
+			<form method="post" action="/changepsw/">
+				{% for field in changepsw_form %}
+					<label> {{ field.label }}: </label>
+					{{ field }}<br/>
+					<h5>{% if field.errors %}
+						{{ field.errors }}
+					{% endif %}</h5>
+				{% endfor %}
+				<input type="submit" value="Keisti" />
+			</form>
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="sidebar">
+	<div id="sidebar-bgtop"></div>
+	<div id="sidebar-content">
+		<div id="sidebar-bgbtm">
+		<ul>
+			{% include "latest.html" %}
+		</ul>
+	</div>
+	</div>
+</div>
+<!-- end #sidebar -->
+<div style="clear:both; margin:0;"></div>
+{% endblock %}
+
+
+

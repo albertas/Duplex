@@ -1,0 +1,38 @@
+{% extends "master.html" %}
+{% block title %}
+		Sveiki!!
+{% endblock %}
+{% block content %}
+<div id="content">
+	<div class="post">
+		<h1 class="title">Kontaktai</h1>
+		<div class="entry">
+			<p>
+				Autorius: Albertas Gimbutas<br>
+				Tel. 8 615 76970<br>
+				El. paštas: albertasgim@gmail.com<br>
+			</p> 
+		</div>
+		<div class="meta">
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="sidebar">
+	<div id="sidebar-bgtop"></div>
+	<div id="sidebar-content">
+		<div id="sidebar-bgbtm">
+		<ul>
+			{% if not user.is_authenticated %}
+				{% include "user/login.html" %}
+			{% else %}
+				{% include "user/logout.html" %}
+			{% endif %}
+			{% include "latest.html" %}
+		</ul>
+	</div>
+	</div>
+</div>
+<div style="clear:both; margin:0;"></div>
+{% endblock %}

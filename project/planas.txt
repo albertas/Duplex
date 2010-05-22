@@ -1,0 +1,6 @@
+Receptų katalogas „e-Virtuvė“ - vykdymo planas
+
+04-08 – receptų įrašų sukūrimo galimybė (su administratoriaus prieiga).
+05-13 – naudotojų registracijos galimybė, receptų peržiūros, kūrimo galimybė. Naudotojų bei sukurtų receptų patvirtinimo galimybė.
+05-20 – receptų paieškos galimybė, pagal pasirinktus kriterijus.
+05-27 – recepto nuotraukos įkėlimo, receptų komentavimo galimybė. 

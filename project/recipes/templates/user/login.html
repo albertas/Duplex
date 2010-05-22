@@ -1,0 +1,19 @@
+<li id="search">
+	<h2>Paskyra</h2>
+	<form method="post" action="/login/">
+		<fieldset>
+		{% if login_message %}
+			<b>{{ login_message }}</b><br/><br/>
+		{% endif %}
+		{% for field in login_form %}
+			<label> {{ field.label }}: </label> 
+			{{ field }}<br/>
+			<h5>{% if field.errors %}
+			 	{{ field.errors }}
+			{% endif %}</h5>
+		{% endfor %}
+		<input type="submit" name="prisijungti" value="prisijungti" />
+		<a href="/register/">Registruotis</a>
+		</fieldset>
+	</form>
+</li>

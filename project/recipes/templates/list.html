@@ -1,0 +1,49 @@
+{% extends "master.html" %}
+{% block title %}
+		Sveiki!!
+{% endblock %}
+{% block content %}
+<div id="content">
+	<div class="post">
+		<h1 class="title">Receptų sąrašas</h1>
+		<div class="entry">
+			{% if recipe_list %}
+				<ul> 
+				{% if recipe_list.name %}
+					<a href="/receptas/{{ recipe_list.pk }}">{{ recipe_list.name }} <i>({{recipe_list.pub_date.date}})</i></a><br/>
+				{% else %}
+			    	{% for recipe in recipe_list %}
+						<a href="/receptas/{{ recipe.pk }}">{{ recipe.name }} <i>({{recipe.pub_date.date}})</i></a><br/>
+					{% endfor %}
+				{% endif %}
+				</ul>
+			{% else %}
+				<p>Receptų nerasta.</p>
+			{% endif %}
+		</div>
+		<div class="meta">
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="sidebar">
+	<div id="sidebar-bgtop"></div>
+	<div id="sidebar-content">
+		<div id="sidebar-bgbtm">
+		<ul>
+			{% if not user.is_authenticated %}
+				{% include "user/login.html" %}
+			{% else %}
+				{% include "user/logout.html" %}
+			{% endif %}
+			{% include "latest.html" %}
+		</ul>
+	</div>
+	</div>
+</div>
+<!-- end #sidebar -->
+<div style="clear:both; margin:0;"></div>
+{% endblock %}
+
+

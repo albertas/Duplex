@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+{% block title %}
+		Registracija
+{% endblock %}
+{% block content %}
+<div id="content">
+	<div class="post">
+		<h1 class="title">Registracija</h1>
+		<div class="entry">
+			<p>
+			<form method="post" action="/register/">
+				{% if error_message %}
+					<b><p>{{ error_message }}</p></b>
+				{% endif %}
+				{% for field in register_form %}
+					<label> {{ field.label }}: </label>
+					{{ field }}<br/>
+					<h5>{% if field.errors %}
+						{{ field.errors }}
+					{% endif %}</h5>
+				{% endfor %}
+				<input type="submit" value="registruotis" />
+			</form>
+			</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block sidebar %}
+<div id="sidebar">
+	<div id="sidebar-bgtop"></div>
+	<div id="sidebar-content">
+		<div id="sidebar-bgbtm">
+		<ul>
+			{% include "latest.html" %}
+		</ul>
+	</div>
+	</div>
+</div>
+<!-- end #sidebar -->
+<div style="clear:both; margin:0;"></div>
+{% endblock %}
+
+
+
